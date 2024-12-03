@@ -1,0 +1,31 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+
+{% block body %}
+
+
+       <!----Show image--->
+      <h2 class="text-center my-4">Uploaded Images</h2>
+
+       <div class="container">
+          <div class="d-flex flex-wrap justify-content-start">
+               {% for image in images %}
+              <div class="p-2">
+                  <img src="{{ image.image.url }}" alt="Uploaded Image" style="width: 300px;height:300px">
+                  <p><strong>Title :</strong>{{ image.title }}</p>
+                  <p><strong>Price :</strong>{{ image.price }}</p>
+
+                  <a href="/image_delete/{{ image.id }}" class="btn btn-outline-danger">DELETE</a>
+                  <a href="" class="btn btn-outline-success">PAY</a><br>
+              </div>
+           {% endfor %}
+          </div>
+
+       </div>
+
+        <div class="container text-center my-4">
+            <a href="{% url 'upload_image' %}" class="btn btn-warning">Go to upload an image</a>
+        </div>
+
+
+{% endblock %}
